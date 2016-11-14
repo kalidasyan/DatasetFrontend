@@ -1,18 +1,35 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {fetchDataProfilingDefinition} from '../actions/index';
+import {fetchDatasets} from '../actions/index';
 
 //Dataset could be the DataProfilingDefinition and future models.
 class DatasetList extends Component {
   componentWillMount(){
-    this.props.fetchDataProfilingDefinition();
+    this.props.fetchDatasets();
+  }
+
+  renderDatasets() {
+    return this.props.datasets.map((dataset) =>  {
+      return (
+        <li className="list-group-item" key={dataset.id}>
+            <span className="pull-xs-right">{dataset.name}</span>
+            <strong>{dataset.name}</strong>
+        </li>
+      );
+    });
   }
 
   render() {
     return <div>
-      Dataset List
+      <ul className="list-group">
+        {this.renderDatasets()}
+      </ul>
     </div>
   }
 }
 
-export default connect(null, {fetchDataProfilingDefinition})(DatasetList);
+function mapStateToProps(state) {
+  return {datasets : state.dataset.all}
+}
+
+export default connect(mapStateToProps, {fetchDatasets})(DatasetList);

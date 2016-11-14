@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
+import DatasetReducer from './reducer_dataset';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  dataset: DatasetReducer
 });
 
 export default rootReducer;
