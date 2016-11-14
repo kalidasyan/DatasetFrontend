@@ -24,6 +24,54 @@ class DatasetNew extends Component {
           </div>
         </div>
 
+        <div className={`form-group ${inputLocation.touched && inputLocation.invalid ? 'has-danger' : ''}`}>
+          <label>Input Location</label>
+          <input type="text" className="form-control" {...inputLocation} />
+          <div className="form-control-feedback">
+            {inputLocation.touched ? inputLocation.error : ''}
+          </div>
+        </div>
+
+        <div className={`form-group ${outputLocation.touched && outputLocation.invalid ? 'has-danger' : ''}`}>
+          <label>Output Location</label>
+          <input type="text" className="form-control" {...outputLocation} />
+          <div className="form-control-feedback">
+            {outputLocation.touched ? outputLocation.error : ''}
+          </div>
+        </div>
+
+        <div className={`form-group ${profilingMethod.touched && profilingMethod.invalid ? 'has-danger' : ''}`}>
+          <label>Profiling Method</label>
+          <input type="text" className="form-control" {...profilingMethod} />
+          <div className="form-control-feedback">
+            {profilingMethod.touched ? profilingMethod.error : ''}
+          </div>
+        </div>
+
+        <div className={`form-group ${profilingColumns.touched && profilingColumns.invalid ? 'has-danger' : ''}`}>
+          <label>Profiling Columns (Comma Separated)</label>
+          <input type="text" className="form-control" {...profilingColumns} />
+          <div className="form-control-feedback">
+            {profilingColumns.touched ? profilingColumns.error : ''}
+          </div>
+        </div>
+
+        <div className={`form-group ${profilingFrequency.touched && profilingFrequency.invalid ? 'has-danger' : ''}`}>
+          <label>Profiling Frequency</label>
+          <input type="text" className="form-control" {...profilingFrequency} />
+          <div className="form-control-feedback">
+            {profilingFrequency.touched ? profilingFrequency.error : ''}
+          </div>
+        </div>
+
+        <div className={`form-group ${definitionDescription.touched && definitionDescription.invalid ? 'has-danger' : ''}`}>
+          <label>Definition Description</label>
+          <textarea placeholder="enter description.." className="form-control" {...definitionDescription} />
+          <div className="form-control-feedback">
+            {definitionDescription.touched ? definitionDescription.error : ''}
+          </div>
+        </div>
+
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
