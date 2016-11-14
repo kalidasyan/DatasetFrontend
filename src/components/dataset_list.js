@@ -1,6 +1,13 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {fetchDataProfilingDefinition} from '../actions/index';
 
+//Dataset could be the DataProfilingDefinition and future models.
 class DatasetList extends Component {
+  componentWillMount(){
+    this.props.fetchDataProfilingDefinition();
+  }
+
   render() {
     return <div>
       Dataset List
@@ -8,4 +15,4 @@ class DatasetList extends Component {
   }
 }
 
-export default DatasetList;
+export default connect(null, {fetchDataProfilingDefinition})(DatasetList);
