@@ -13,8 +13,10 @@ class DatasetList extends Component {
     return this.props.datasets.map((dataset) =>  {
       return (
         <li className="list-group-item" key={dataset.id}>
+          <Link to={"/dataset/" + dataset.id}>
             <span className="pull-xs-right">{dataset.name}</span>
             <strong>{dataset.name}</strong>
+          </Link>
         </li>
       );
     });
