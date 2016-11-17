@@ -10,6 +10,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={DatasetList} />
     <Route path="dataset/new" component={DatasetNew} />
+    <Route path="dataset/update" component={DatasetNew} />
     <Route path="dataset/:id" component={DatasetShow} />
   </Route>
 );

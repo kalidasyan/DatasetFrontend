@@ -17,10 +17,11 @@ class DatasetShow extends Component {
 
     return <div>
       <Link to='/'>Back to List</Link>
-      <button
-        className="btn btn-danger pull-xs-right">
-          Delete
-      </button>
+      <Link 
+        to='/dataset/update'
+        className="btn btn-primary pull-xs-right">
+          Edit
+      </Link>
       <h3>{definition.definitionName}</h3>
       <hr/>
       <div>

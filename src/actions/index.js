@@ -3,6 +3,7 @@ import axios from 'axios';
 export const FETCH_DATASETS = 'FETCH_DATASETS';
 export const FETCH_DATASET_BY_ID = 'FETCH_DATASET_BY_ID';
 export const CREATE_DATASET = 'CREATE_DATASET';
+export const MODIFY_DATASET = 'MODIFY_DATASET';
 
 const ROOT_URL = 'http://localhost:8081/dataset/v1/';
 
@@ -32,6 +33,16 @@ export function createDataset(props) {
 
   return {
     type: CREATE_DATASET,
+    payload: request
+  }
+}
+
+export function modifyDataset(props) {
+  const url = `${ROOT_URL}dataProfilingDef/modify`;
+  const request = axios.post(url, props);
+
+  return {
+    type: MODIFY_DATASET,
     payload: request
   }
 }
