@@ -127,8 +127,10 @@ function validate(values) {
 
 function mapStateToProps(state) {
   var dataset = state.dataset.activeDataset;
-  dataset.profilingMethodId = dataset.profilingMethod.id;
-  dataset.profilingMethodName = dataset.profilingMethod.methodName;
+  if(dataset) { //If it is a dataset_new operation, profilingMethod is not available
+    dataset.profilingMethodId = dataset.profilingMethod.id;
+    dataset.profilingMethodName = dataset.profilingMethod.methodName;
+  }
   return {initialValues: dataset};
 }
 

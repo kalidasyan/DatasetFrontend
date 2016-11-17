@@ -9,17 +9,22 @@ class DatasetList extends Component {
     this.props.fetchDatasets();
   }
 
-  renderDatasets() {
-    return this.props.datasets.map((definition) =>  {
+  renderDataset(definition) {
       return (
-        <li className="list-group-item" key={definition.id}>
-          <Link to={"/dataset/" + definition.id}>
-            <span className="pull-xs-right">{definition.definitionName}</span>
-            <strong>{definition.definitionName}</strong>
-          </Link>
-        </li>
+        <tr scope="row" key={definition.id}>
+          <td>{definition.id}</td>
+          <td>
+            <Link to={"/dataset/" + definition.id}>
+              {definition.definitionName}
+            </Link>
+          </td>
+          <td>{definition.inputLocation}</td>
+          <td>{definition.outputLocation}</td>
+          <td>{definition.profilingMethod.methodName}</td>
+          <td>{definition.profilingColumns}</td>
+          <td>{definition.profilingFrequency}</td>
+        </tr>
       );
-    });
   }
 
   render() {
@@ -32,9 +37,22 @@ class DatasetList extends Component {
         </Link>
       </div>
       <h3>Data Profiling Definitions</h3>
-      <ul className="list-group">
-        {this.renderDatasets()}
-      </ul>
+      <table className="table table-striped">
+        <thead className="thead-inverse">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Input Location</th>
+            <th>Output Location</th>
+            <th>Profiling Method</th>
+            <th>Profiling Columns</th>
+            <th>Profiling Frequency</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.props.datasets.map(this.renderDataset)}
+        </tbody>
+      </table>
     </div>);
   }
 }
