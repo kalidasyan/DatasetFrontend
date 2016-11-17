@@ -1,13 +1,23 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
 import {reduxForm} from 'redux-form';
 import {createDataset} from '../actions/index';
 
 class DatasetNew extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   onSubmit(props) {
     props.profilingMethod = {id: props['profilingMethod']};
     console.log(props);
-    this.props.createDataset(props);
+    this.props.createDataset(props)
+      .then(() => {
+        //definition has been created, navigate the user to the index
+        //we navigate by calling this.context.router.push with the new
+        //path to navigate to.
+        this.context.router.push('/');
+      });
   }
 
   render() {
