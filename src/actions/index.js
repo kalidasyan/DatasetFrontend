@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const FETCH_DATASETS = 'FETCH_DATASETS';
+export const FETCH_DATASET_BY_ID = 'FETCH_DATASET_BY_ID';
 export const CREATE_DATASET = 'CREATE_DATASET';
 
 const ROOT_URL = 'http://localhost:8081/dataset/v1/';
@@ -13,6 +14,16 @@ export function fetchDatasets() {
     type: FETCH_DATASETS,
     payload: request
   };
+}
+
+export function fetchDatasetById(id) {
+  const url = `${ROOT_URL}dataProfilingDef/get/${id}`;
+  const request = axios.get(url);
+
+  return {
+    type: FETCH_DATASET_BY_ID,
+    payload: request
+  }
 }
 
 export function createDataset(props) {

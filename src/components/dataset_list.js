@@ -10,12 +10,12 @@ class DatasetList extends Component {
   }
 
   renderDatasets() {
-    return this.props.datasets.map((dataset) =>  {
+    return this.props.datasets.map((definition) =>  {
       return (
-        <li className="list-group-item" key={dataset.id}>
-          <Link to={"/dataset/" + dataset.id}>
-            <span className="pull-xs-right">{dataset.definitionName}</span>
-            <strong>{dataset.definitionName}</strong>
+        <li className="list-group-item" key={definition.id}>
+          <Link to={"/dataset/" + definition.id}>
+            <span className="pull-xs-right">{definition.definitionName}</span>
+            <strong>{definition.definitionName}</strong>
           </Link>
         </li>
       );
@@ -23,6 +23,7 @@ class DatasetList extends Component {
   }
 
   render() {
+
     return (
     <div>
       <div className="text-xs-right">
