@@ -5,14 +5,16 @@ import {createDataset} from '../actions/index';
 
 class DatasetNew extends Component {
   onSubmit(props) {
+    props.profilingMethod = {id: props['profilingMethod']};
     console.log(props);
+    this.props.createDataset(props);
   }
 
   render() {
     const {fields: {definitionName, inputLocation, outputLocation,
       profilingMethod, profilingColumns,
       profilingFrequency, definitionDescription}, handleSubmit} = this.props;
-
+    console.log(profilingMethod);
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <h3>Create A New Data Profiling Definition</h3>
@@ -63,7 +65,6 @@ class DatasetNew extends Component {
             {profilingFrequency.touched ? profilingFrequency.error : ''}
           </div>
         </div>
-
         <div className={`form-group ${definitionDescription.touched && definitionDescription.invalid ? 'has-danger' : ''}`}>
           <label>Definition Description</label>
           <textarea placeholder="enter description.." className="form-control" {...definitionDescription} />
@@ -71,7 +72,6 @@ class DatasetNew extends Component {
             {definitionDescription.touched ? definitionDescription.error : ''}
           </div>
         </div>
-
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/" className="btn btn-danger">Cancel</Link>
       </form>
@@ -84,6 +84,18 @@ function validate(values) {
 
   if(!values.definitionName) {
     errors.definitionName = 'Enter a name';
+  }
+
+  if(!values.inputLocation) {
+    errors.inputLocation = 'Enter a location';
+  }
+
+  if(!values.outputLocation) {
+    errors.outputLocation = 'Enter a location';
+  }
+
+  if(!values.profilingMethod) {
+    errors.profilingMethod = 'Select a Profiling Method';
   }
 
   return errors;

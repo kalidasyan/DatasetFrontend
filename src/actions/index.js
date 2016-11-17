@@ -15,9 +15,9 @@ export function fetchDatasets() {
   };
 }
 
-export function createDataset() {
+export function createDataset(props) {
   const url = `${ROOT_URL}dataProfilingDef/create`;
-  const request = axios.post(url);
+  const request = axios.post(url, props);
 
   return {
     type: CREATE_DATASET,
