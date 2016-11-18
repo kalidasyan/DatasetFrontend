@@ -4,6 +4,7 @@ export const FETCH_DATASETS = 'FETCH_DATASETS';
 export const FETCH_DATASET_BY_ID = 'FETCH_DATASET_BY_ID';
 export const CREATE_DATASET = 'CREATE_DATASET';
 export const MODIFY_DATASET = 'MODIFY_DATASET';
+export const RESET_DATASET = 'RESET_DATASET';
 
 const ROOT_URL = 'http://localhost:8081/dataset/v1/';
 
@@ -44,5 +45,12 @@ export function modifyDataset(props) {
   return {
     type: MODIFY_DATASET,
     payload: request
+  }
+}
+
+export function resetDataset() {
+    return {
+      type: RESET_DATASET,
+      payload: null
   }
 }

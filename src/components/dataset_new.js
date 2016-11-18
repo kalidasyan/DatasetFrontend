@@ -120,8 +120,6 @@ function validate(values) {
     errors.profilingMethodName = 'Select a Profiling Method';
   }
 
-  console.log(errors);
-
   return errors;
 }
 

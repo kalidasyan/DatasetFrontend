@@ -1,10 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchDatasets} from '../actions/index';
+import {fetchDatasets, resetDataset} from '../actions/index';
 import {Link} from 'react-router';
 
 //Dataset could be the DataProfilingDefinition and future models.
 class DatasetList extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   componentWillMount(){
     this.props.fetchDatasets();
   }
@@ -27,14 +31,19 @@ class DatasetList extends Component {
       );
   }
 
+  handleCreateClick() {
+    this.props.resetDataset();
+    this.context.router.push('/dataset/new');
+  }
+
   render() {
 
     return (
     <div>
       <div className="text-xs-right">
-        <Link to="/dataset/new" className="btn btn-primary">
+        <button onClick={this.handleCreateClick.bind(this)} className="btn btn-primary">
           Add a Data Profiling Definition
-        </Link>
+        </button>
       </div>
       <h3>Data Profiling Definitions</h3>
       <table className="table table-striped">
@@ -61,4 +70,4 @@ function mapStateToProps(state) {
   return {datasets : state.dataset.all}
 }
 
-export default connect(mapStateToProps, {fetchDatasets})(DatasetList);
+export default connect(mapStateToProps, {fetchDatasets, resetDataset})(DatasetList);

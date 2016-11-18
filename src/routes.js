@@ -14,7 +14,6 @@ export default (
     <Route path="dataset/update" component={DatasetNew} />
     <Route path="dataset/:id" component={DatasetShow} />
     <Route path="method" component={MethodList}>
-
     </Route>
   </Route>
 );
