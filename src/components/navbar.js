@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 export default class Navbar extends Component {
   render() {
     return (
-      <nav className="navbar navbar-default">
+      <nav className="navbar navbar-inverse">
         <div className="container-fluid">
           <div className="navbar-header">
             <Link to="/" className="navbar-brand">Data Profiling</Link>
@@ -12,8 +12,8 @@ export default class Navbar extends Component {
           <ul className="nav navbar-nav">
             <li className="active"><Link to="/">Definitions</Link></li>
             <li><Link to="/method">Profiling Method</Link></li>
-            <li><a href="#">placeholder 1</a></li>
-            <li><a href="#">placeholder 2</a></li>
+            <li><a href="#">Validation Rule</a></li>
+            <li><a href="#">placeholder</a></li>
           </ul>
         </div>
       </nav>

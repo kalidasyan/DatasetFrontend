@@ -35,62 +35,63 @@ class DatasetNew extends Component {
     const {fields: {id, definitionName, inputLocation, outputLocation,
       profilingMethodId, profilingMethodName, profilingColumns,
       profilingFrequency, definitionDescription}, handleSubmit} = this.props;
-
+      console.log(definitionName);
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <input type="hidden" {...id} />
         <h3>Create A New Data Profiling Definition</h3>
-        <div className={`form-group ${definitionName.touched && definitionName.invalid ? 'has-danger' : ''}`}>
+        <hr />
+        <div className={`form-group ${definitionName.touched && definitionName.invalid ? 'has-error' : ''}`}>
           <label>Definition Name</label>
           <input type="text" className="form-control" {...definitionName} />
-          <div className="form-control-feedback">
+          <div className="text">
             {definitionName.touched ? definitionName.error : ''}
           </div>
         </div>
 
-        <div className={`form-group ${inputLocation.touched && inputLocation.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${inputLocation.touched && inputLocation.invalid ? 'has-error' : ''}`}>
           <label>Input Location</label>
           <input type="text" className="form-control" {...inputLocation} />
-          <div className="form-control-feedback">
+          <div className="text">
             {inputLocation.touched ? inputLocation.error : ''}
           </div>
         </div>
 
-        <div className={`form-group ${outputLocation.touched && outputLocation.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${outputLocation.touched && outputLocation.invalid ? 'has-error' : ''}`}>
           <label>Output Location</label>
           <input type="text" className="form-control" {...outputLocation} />
-          <div className="form-control-feedback">
+          <div className="text">
             {outputLocation.touched ? outputLocation.error : ''}
           </div>
         </div>
         <input type="hidden" {...profilingMethodId} />
-        <div className={`form-group ${profilingMethodName.touched && profilingMethodName.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${profilingMethodName.touched && profilingMethodName.invalid ? 'has-error' : ''}`}>
           <label>Profiling Method</label>
           <input type="text" className="form-control" {...profilingMethodName} />
-          <div className="form-control-feedback">
+          <div className="text">
             {profilingMethodName.touched ? profilingMethodName.error : ''}
           </div>
         </div>
 
-        <div className={`form-group ${profilingColumns.touched && profilingColumns.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${profilingColumns.touched && profilingColumns.invalid ? 'has-error' : ''}`}>
           <label>Profiling Columns (Comma Separated)</label>
           <input type="text" className="form-control" {...profilingColumns} />
-          <div className="form-control-feedback">
+          <div className="text">
             {profilingColumns.touched ? profilingColumns.error : ''}
           </div>
         </div>
 
-        <div className={`form-group ${profilingFrequency.touched && profilingFrequency.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${profilingFrequency.touched && profilingFrequency.invalid ? 'has-error' : ''}`}>
           <label>Profiling Frequency</label>
           <input type="text" className="form-control" {...profilingFrequency} />
-          <div className="form-control-feedback">
+          <div className="text">
             {profilingFrequency.touched ? profilingFrequency.error : ''}
           </div>
         </div>
-        <div className={`form-group ${definitionDescription.touched && definitionDescription.invalid ? 'has-danger' : ''}`}>
+        <div className={`form-group ${definitionDescription.touched && definitionDescription.invalid ? 'has-error' : ''}`}>
           <label>Definition Description</label>
           <textarea placeholder="enter description.." className="form-control" {...definitionDescription} />
-          <div className="form-control-feedback">
+          <div className="text">
             {definitionDescription.touched ? definitionDescription.error : ''}
           </div>
         </div>
@@ -128,8 +129,11 @@ function mapStateToProps(state) {
   if(dataset) { //If it is a dataset_new operation, profilingMethod is not available
     dataset.profilingMethodId = dataset.profilingMethod.id;
     dataset.profilingMethodName = dataset.profilingMethod.methodName;
+    return {initialValues: dataset};
+  } else {
+    return null;
   }
-  return {initialValues: dataset};
+
 }
 
 export default reduxForm({
