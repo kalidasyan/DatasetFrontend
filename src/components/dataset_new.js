@@ -4,8 +4,18 @@ import {addDataset} from '../actions/index';
 import FieldArraysForm from './dataset_form';
 
 class DatasetNew extends Component {
+  static contextTypes = {
+    router: PropTypes.object
+  }
+
   showResults(values) {
-    this.props.addDataset(values);
+    this.props.addDataset(values)
+      .then(() => {
+      //definition has been created, navigate the user to the index
+      //we navigate by calling this.context.router.push with the new
+      //path to navigate to.
+      this.context.router.push('/');
+    });
 /*
     new Promise(resolve => {
       setTimeout(() => {  // simulate server latency
