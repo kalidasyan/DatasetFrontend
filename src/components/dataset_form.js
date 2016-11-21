@@ -36,32 +36,6 @@ const renderSelectField = ({input, label, type, meta: { touched, error } }) => (
   </div>
 )
 
-const renderRule = (rule, index) => {
-  return (
-  <li key={index}>
-    <button
-      type="button"
-      title="Remove Rule"
-      onClick={() => fields.remove(index)}/>
-    <h4>Dataset Rule #{index + 1}</h4>
-    <Field
-      name={`${rule}.columnName`}
-      type="text"
-      component={renderField}
-      label="Column Name"/>
-    <Field
-      name={`${rule}.rule.id`}
-      component={renderSelectField}
-      label="Rule" />
-    <Field
-      name={`${rule}.parameters`}
-      type="text"
-      component={renderField}
-      label="Value"/>
-  </li>
-  );
-}
-
 const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
   return (
   <ul>
@@ -69,7 +43,29 @@ const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
       <button type="button" onClick={() => fields.push({})}>Add Dataset Rule</button>
       {touched && error && <span>{error}</span>}
     </li>
-    {fields.map(renderRule)}
+    {fields.map((rule, index) =>
+      <li key={index}>
+        <button
+          type="button"
+          title="Remove Rule"
+          onClick={() => fields.remove(index)}/>
+        <h4>Dataset Rule #{index + 1}</h4>
+        <Field
+          name={`${rule}.columnName`}
+          type="text"
+          component={renderField}
+          label="Column Name"/>
+        <Field
+          name={`${rule}.rule.id`}
+          component={renderSelectField}
+          label="Rule" />
+        <Field
+          name={`${rule}.parameters`}
+          type="text"
+          component={renderField}
+          label="Value"/>
+      </li>
+      )}
   </ul>
   );
 }
