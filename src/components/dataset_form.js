@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import validate from './dataset_form_validate'
 
@@ -70,10 +71,12 @@ const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
   );
 }
 
-const FieldArraysForm = (props) => {
+let FieldArraysForm = (props) => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
+      <h2>Edit Dataset</h2>
+      <Field name="id" type="hidden" component={renderField} />
       <Field name="name" type="text" component={renderField} label="Dataset Name" />
       <Field name="location" type="text" component={renderField} label="Dataset Location" />
       <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
@@ -87,7 +90,14 @@ const FieldArraysForm = (props) => {
   )
 }
 
-export default reduxForm({
+FieldArraysForm = reduxForm({
   form: 'fieldArrays',     // a unique identifier for this form
   validate
-})(FieldArraysForm)
+})(FieldArraysForm);
+
+export default connect(
+  state => ({
+      initialValues: state.dataset.activeDataset // pull initial values from account reducer
+    }),
+  null
+)(FieldArraysForm);

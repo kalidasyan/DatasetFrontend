@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {addDataset} from '../actions/index';
+import {addDataset, updateDataset} from '../actions/index';
 import FieldArraysForm from './dataset_form';
 
 class DatasetNew extends Component {
@@ -9,13 +9,20 @@ class DatasetNew extends Component {
   }
 
   showResults(values) {
-    this.props.addDataset(values)
-      .then(() => {
-      //definition has been created, navigate the user to the index
-      //we navigate by calling this.context.router.push with the new
-      //path to navigate to.
-      this.context.router.push('/');
-    });
+    if(values.id) {
+      this.props.updateDataset(values)
+        .then(() => {
+        this.context.router.push('/');
+      });
+    } else {
+      this.props.addDataset(values)
+        .then(() => {
+        //definition has been created, navigate the user to the index
+        //we navigate by calling this.context.router.push with the new
+        //path to navigate to.
+        this.context.router.push('/');
+      });
+    }
 /*
     new Promise(resolve => {
       setTimeout(() => {  // simulate server latency
@@ -33,4 +40,4 @@ class DatasetNew extends Component {
   }
 }
 
-export default connect(null, {addDataset})(DatasetNew);
+export default connect(null, {addDataset, updateDataset})(DatasetNew);

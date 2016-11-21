@@ -3,7 +3,7 @@ import axios from 'axios';
 export const GET_ALL_DATASETS = 'GET_ALL_DATASETS';
 export const GET_DATASET_BY_ID = 'GET_DATASET_BY_ID';
 export const ADD_DATASET = 'ADD_DATASET';
-export const MODIFY_DATASET = 'MODIFY_DATASET';
+export const UPDATE_DATASET = 'UPDATE_DATASET';
 export const RESET_DATASET = 'RESET_DATASET';
 
 const ROOT_URL = 'http://localhost:8081/dataset/v1/';
@@ -38,12 +38,12 @@ export function addDataset(props) {
   }
 }
 
-export function modifyDataset(props) {
-  const url = `${ROOT_URL}dataProfilingDef/modify`;
+export function updateDataset(props) {
+  const url = `${ROOT_URL}dataset/update`;
   const request = axios.post(url, props);
 
   return {
-    type: MODIFY_DATASET,
+    type: UPDATE_DATASET,
     payload: request
   }
 }
