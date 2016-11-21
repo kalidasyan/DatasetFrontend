@@ -2,11 +2,12 @@ import React from 'react'
 import { Field, FieldArray, reduxForm } from 'redux-form'
 import validate from './validate'
 
-const renderField = ({ input, label, type, meta: { touched, error } }) => (
+const renderField = ({input, label, type, meta: { touched, error } }) => (
+
   <div>
     <label>{label}</label>
     <div>
-      <input {...input} type={type} placeholder={label}/>
+      <input {...input} type={type} placeholder={label} />
       {touched && error && <span>{error}</span>}
     </div>
   </div>
@@ -24,7 +25,7 @@ const renderMembers = ({ fields, meta: { touched, error } }) => (
           type="button"
           title="Remove Member"
           onClick={() => fields.remove(index)}/>
-        <h4>Member #{index + 1}</h4>
+        <h4>Dataset Rule #{index + 1}</h4>
         <Field
           name={`${member}.firstName`}
           type="text"
@@ -44,8 +45,11 @@ const FieldArraysForm = (props) => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
     <form onSubmit={handleSubmit}>
-      <Field name="clubName" type="text" component={renderField} label="Club Name"/>
-      <FieldArray name="members" component={renderMembers}/>
+      <Field name="name" type="text" component={renderField} label="Dataset Name" />
+      <Field name="location" type="text" component={renderField} label="Dataset Location" />
+      <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
+      <Field name="notificationList" type="text" component={renderField} label="Notification List" />
+      <FieldArray name="datasetRules" component={renderMembers}/>
       <div>
         <button type="submit" disabled={submitting}>Submit</button>
         <button type="button" disabled={pristine || submitting} onClick={reset}>Clear Values</button>

@@ -1,44 +1,38 @@
 const validate = values => {
   const errors = {}
-  if(!values.clubName) {
-    errors.clubName = 'Required'
+  if(!values.name) {
+    errors.name = 'Required'
   }
-  if (!values.members || !values.members.length) {
-    errors.members = { _error: 'At least one member must be entered' }
+
+  if(!values.location) {
+    errors.location = 'Required'
+  }
+
+  if(!values.refreshFrequency) {
+    errors.refreshFrequency = 'Required'
+  }
+
+  if(!values.notificationList) {
+    errors.notificationList = 'Required'
+  }
+
+  if (!values.datasetRules || !values.datasetRules.length) {
+    errors.datasetRules = { _error: 'At least one dataset rule must be entered' }
   } else {
-    const membersArrayErrors = []
-    values.members.forEach((member, memberIndex) => {
-      const memberErrors = {}
-      if (!member || !member.firstName) {
-        memberErrors.firstName = 'Required'
-        membersArrayErrors[memberIndex] = memberErrors
+    const datasetRulesErrors = []
+    values.datasetRules.forEach((rule, ruleIndex) => {
+      const ruleErrors = {}
+      if (!rule || !rule.firstName) {
+        ruleErrors.firstName = 'Required'
+        datasetRulesErrors[ruleIndex] = ruleErrors
       }
-      if (!member || !member.lastName) {
-        memberErrors.lastName = 'Required'
-        membersArrayErrors[memberIndex] = memberErrors
-      }
-      if (member && member.hobbies && member.hobbies.length) {
-        const hobbyArrayErrors = []
-        member.hobbies.forEach((hobby, hobbyIndex) => {
-          if (!hobby || !hobby.length) {
-            hobbyArrayErrors[hobbyIndex] =  'Required'
-          }
-        })
-        if(hobbyArrayErrors.length) {
-          memberErrors.hobbies = hobbyArrayErrors
-          membersArrayErrors[memberIndex] = memberErrors
-        }
-        if (member.hobbies.length > 5) {
-          if(!memberErrors.hobbies) {
-            memberErrors.hobbies = []
-          }
-          memberErrors.hobbies._error = 'No more than five hobbies allowed'
-          membersArrayErrors[memberIndex] = memberErrors
-        }
+      if (!rule || !rule.lastName) {
+        ruleErrors.lastName = 'Required'
+        datasetRulesErrors[ruleIndex] = ruleErrors
       }
     })
-    if(membersArrayErrors.length) {
-      errors.members = membersArrayErrors
+    if(datasetRulesErrors.length) {
+      errors.datasetRules = datasetRulesErrors
     }
   }
   return errors
