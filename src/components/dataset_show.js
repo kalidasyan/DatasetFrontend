@@ -6,6 +6,39 @@ import {Link} from 'react-router';
 class DatasetShow extends Component {
   componentWillMount() {
     this.props.getDatasetById(this.props.params.id);
+
+    this.renderDatasetRules = this.renderDatasetRules.bind(this);
+    this.renderRule = this.renderRule.bind(this);
+  }
+
+  renderRule(rule) {
+      return (
+        <tr scope="row" key={rule.id}>
+          <td>{rule.columnName}</td>
+          <td>{rule.rule.name}</td>
+          <td>{rule.parameters}</td>
+        </tr>
+      );
+  }
+
+  renderDatasetRules(dataset) {
+    return (
+      <div>
+        <h3>Dataset Rules</h3>
+        <table className="table table-striped">
+          <thead className="thead-inverse">
+            <tr>
+              <th>Column Name</th>
+              <th>Rule</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dataset.datasetRules.map(this.renderRule)}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 
   render() {
@@ -28,6 +61,8 @@ class DatasetShow extends Component {
         <p>Location: {dataset.location}</p>
         <p>Profiling Frequency: {dataset.refreshFrequency}</p>
         <p>Notification List: {dataset.notificationList}</p>
+        <hr/>
+        {this.renderDatasetRules(dataset)}
       </div>
 
     </div>
