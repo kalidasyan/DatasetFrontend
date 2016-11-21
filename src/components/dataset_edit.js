@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {addDataset, updateDataset} from '../actions/index';
 import FieldArraysForm from './dataset_form';
 
-class DatasetNew extends Component {
+class DatasetEdit extends Component {
   static contextTypes = {
     router: PropTypes.object
   }
@@ -40,4 +40,4 @@ class DatasetNew extends Component {
   }
 }
 
-export default connect(null, {addDataset, updateDataset})(DatasetNew);
+export default connect(null, {addDataset, updateDataset})(DatasetEdit);
