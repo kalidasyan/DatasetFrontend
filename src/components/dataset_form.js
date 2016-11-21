@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, FieldArray, reduxForm } from 'redux-form'
-import validate from './validate'
+import validate from './dataset_form_validate'
 
 const renderField = ({input, label, type, meta: { touched, error } }) => (
 

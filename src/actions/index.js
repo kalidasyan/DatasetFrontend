@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const FETCH_DATASETS = 'FETCH_DATASETS';
 export const FETCH_DATASET_BY_ID = 'FETCH_DATASET_BY_ID';
-export const CREATE_DATASET = 'CREATE_DATASET';
+export const ADD_DATASET = 'ADD_DATASET';
 export const MODIFY_DATASET = 'MODIFY_DATASET';
 export const RESET_DATASET = 'RESET_DATASET';
 
@@ -28,12 +28,12 @@ export function fetchDatasetById(id) {
   }
 }
 
-export function createDataset(props) {
-  const url = `${ROOT_URL}dataProfilingDef/create`;
+export function addDataset(props) {
+  const url = `${ROOT_URL}dataset/add`;
   const request = axios.post(url, props);
 
   return {
-    type: CREATE_DATASET,
+    type: ADD_DATASET,
     payload: request
   }
 }

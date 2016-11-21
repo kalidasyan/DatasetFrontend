@@ -22,7 +22,6 @@ const validate = values => {
   } else {
     const datasetRulesErrors = []
     values.datasetRules.forEach((rule, ruleIndex) => {
-      console.log(rule);
       const ruleErrors = {}
       if (!rule || !rule.columnName) {
         ruleErrors.columnName = 'Required'
@@ -41,7 +40,6 @@ const validate = values => {
       errors.datasetRules = datasetRulesErrors
     }
   }
-  console.log(errors);
   return errors
 }
 
