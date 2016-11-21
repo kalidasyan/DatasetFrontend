@@ -13,7 +13,13 @@ const renderField = ({input, label, type, meta: { touched, error } }) => (
   </div>
 )
 
-const rules = [ 'Min', 'Max', 'Average', 'Count', 'Not-null-Count'];
+const rules = [
+  {'id' : 1, 'name' : 'Min'},
+  {'id' : 2, 'name' : 'Max'},
+  {'id' : 3, 'name' : 'Average'},
+  {'id' : 4, 'name' : 'Count'},
+  {'id' : 5, 'name' : 'Not-null-Count'}
+];
 
 const renderSelectField = ({input, label, type, meta: { touched, error } }) => (
 
@@ -23,7 +29,7 @@ const renderSelectField = ({input, label, type, meta: { touched, error } }) => (
       <select {...input} >
         <option value="">Select a rule...</option>
         {rules.map(ruleOption =>
-          <option value={ruleOption} key={ruleOption}>{ruleOption}</option>)}
+          <option value={ruleOption.id} key={ruleOption.id}>{ruleOption.name}</option>)}
       </select>
       {touched && error && <span>{error}</span>}
     </div>
