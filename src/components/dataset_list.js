@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {fetchDatasets, resetDataset} from '../actions/index';
+import {getAllDatasets, resetDataset} from '../actions/index';
 import {Link} from 'react-router';
 
 //Dataset could be the DataProfilingDefinition and future models.
@@ -10,23 +10,21 @@ class DatasetList extends Component {
   }
 
   componentWillMount(){
-    this.props.fetchDatasets();
+    this.props.getAllDatasets();
   }
 
-  renderDataset(definition) {
+  renderDataset(dataset) {
       return (
-        <tr scope="row" key={definition.id}>
-          <td>{definition.id}</td>
+        <tr scope="row" key={dataset.id}>
+          <td>{dataset.id}</td>
           <td>
-            <Link to={"/dataset/" + definition.id}>
-              {definition.definitionName}
+            <Link to={"/dataset/" + dataset.id}>
+              {dataset.name}
             </Link>
           </td>
-          <td>{definition.inputLocation}</td>
-          <td>{definition.outputLocation}</td>
-          <td>{definition.profilingMethod.methodName}</td>
-          <td>{definition.profilingColumns}</td>
-          <td>{definition.profilingFrequency}</td>
+          <td>{dataset.location}</td>
+          <td>{dataset.refreshFrequency}</td>
+          <td>{dataset.notificationList}</td>
         </tr>
       );
   }
@@ -42,20 +40,18 @@ class DatasetList extends Component {
     <div>
       <div className="text-xs-right">
         <button onClick={this.handleCreateClick.bind(this)} className="btn btn-primary">
-          Add a Data Profiling Definition
+          Add a Dataset
         </button>
       </div>
-      <h3>Data Profiling Definitions</h3>
+      <h3>Dataset Definitions</h3>
       <table className="table table-striped">
         <thead className="thead-inverse">
           <tr>
             <th>#</th>
             <th>Name</th>
-            <th>Input Location</th>
-            <th>Output Location</th>
-            <th>Profiling Method</th>
-            <th>Profiling Columns</th>
-            <th>Profiling Frequency</th>
+            <th>Location</th>
+            <th>Refresh Frequency</th>
+            <th>Notification List</th>
           </tr>
         </thead>
         <tbody>
@@ -70,4 +66,4 @@ function mapStateToProps(state) {
   return {datasets : state.dataset.all}
 }
 
-export default connect(mapStateToProps, {fetchDatasets, resetDataset})(DatasetList);
+export default connect(mapStateToProps, {getAllDatasets, resetDataset})(DatasetList);

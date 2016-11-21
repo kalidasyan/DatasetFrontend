@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const FETCH_DATASETS = 'FETCH_DATASETS';
+export const GET_ALL_DATASETS = 'GET_ALL_DATASETS';
 export const FETCH_DATASET_BY_ID = 'FETCH_DATASET_BY_ID';
 export const ADD_DATASET = 'ADD_DATASET';
 export const MODIFY_DATASET = 'MODIFY_DATASET';
@@ -8,12 +8,12 @@ export const RESET_DATASET = 'RESET_DATASET';
 
 const ROOT_URL = 'http://localhost:8081/dataset/v1/';
 
-export function fetchDatasets() {
-  const url = `${ROOT_URL}dataProfilingDef/all`;
+export function getAllDatasets() {
+  const url = `${ROOT_URL}dataset/all`;
   const request = axios.post(url);
 
   return {
-    type: FETCH_DATASETS,
+    type: GET_ALL_DATASETS,
     payload: request
   };
 }
