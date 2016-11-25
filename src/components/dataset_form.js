@@ -14,15 +14,7 @@ const renderField = ({input, label, type, meta: { touched, error } }) => (
   </div>
 )
 
-const statistics = [
-  {'id' : 1, 'name' : 'Min'},
-  {'id' : 2, 'name' : 'Max'},
-  {'id' : 3, 'name' : 'Average'},
-  {'id' : 4, 'name' : 'Count'},
-  {'id' : 5, 'name' : 'Not-null-Count'}
-];
-
-const renderSelectField = ({input, label, type, meta: { touched, error } }) => (
+const renderStatistics = ({input, label, type, meta: { touched, error } }) => (
 
   <div>
     <label>{label}</label>
@@ -36,6 +28,38 @@ const renderSelectField = ({input, label, type, meta: { touched, error } }) => (
     </div>
   </div>
 )
+
+const renderOperators = ({input, label, type, meta: { touched, error } }) => (
+
+  <div>
+    <label>{label}</label>
+    <div>
+      <select {...input} >
+        <option value="">Select a Operator...</option>
+        {operators.map(operatorOption =>
+          <option value={operatorOption.id} key={operatorOption.id}>{operatorOption.operator}</option>)}
+      </select>
+      {touched && error && <span>{error}</span>}
+    </div>
+  </div>
+)
+
+const statistics = [
+  {'id' : 1, 'name' : 'Min'},
+  {'id' : 2, 'name' : 'Max'},
+  {'id' : 3, 'name' : 'Average'},
+  {'id' : 4, 'name' : 'Count'},
+  {'id' : 5, 'name' : 'Not-null-Count'}
+];
+
+const operators = [
+  {'id' : 1, 'operator' : '<'},
+  {'id' : 2, 'operator' : '>'},
+  {'id' : 3, 'operator' : '='},
+  {'id' : 4, 'operator' : '<='},
+  {'id' : 5, 'operator' : '>='},
+  {'id' : 6, 'operator' : '<>'}
+];
 
 const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
   return (
@@ -52,14 +76,18 @@ const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
           onClick={() => fields.remove(index)}/>
         <h4>Dataset Rule #{index + 1}</h4>
         <Field
-          name={`${rule}.columnName`}
+          name={`${rule}.columns`}
           type="text"
           component={renderField}
           label="Columns (',' separated)"/>
         <Field
-          name={`${rule}.rule.id`}
-          component={renderSelectField}
+          name={`${rule}.statistic.id`}
+          component={renderStatistics}
           label="Statistic" />
+        <Field
+          name={`${rule}.operator.id`}
+          component={renderOperators}
+          label="Operator" />
         <Field
           name={`${rule}.parameters`}
           type="text"
