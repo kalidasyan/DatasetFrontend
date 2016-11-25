@@ -28,7 +28,7 @@ const validate = values => {
         datasetRulesErrors[ruleIndex] = ruleErrors
       }
       if (!rule || !rule.rule) {
-        ruleErrors.rule = {'id' : 'Must select a rule'};
+        ruleErrors.rule = {'id' : 'Must select a statistic'};
         datasetRulesErrors[ruleIndex] = ruleErrors
       }
       if (!rule || !rule.parameters) {

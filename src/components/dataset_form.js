@@ -14,7 +14,7 @@ const renderField = ({input, label, type, meta: { touched, error } }) => (
   </div>
 )
 
-const rules = [
+const statistics = [
   {'id' : 1, 'name' : 'Min'},
   {'id' : 2, 'name' : 'Max'},
   {'id' : 3, 'name' : 'Average'},
@@ -28,9 +28,9 @@ const renderSelectField = ({input, label, type, meta: { touched, error } }) => (
     <label>{label}</label>
     <div>
       <select {...input} >
-        <option value="">Select a rule...</option>
-        {rules.map(ruleOption =>
-          <option value={ruleOption.id} key={ruleOption.id}>{ruleOption.name}</option>)}
+        <option value="">Select a statistic...</option>
+        {statistics.map(statOption =>
+          <option value={statOption.id} key={statOption.id}>{statOption.name}</option>)}
       </select>
       {touched && error && <span>{error}</span>}
     </div>
@@ -55,11 +55,11 @@ const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
           name={`${rule}.columnName`}
           type="text"
           component={renderField}
-          label="Column Name"/>
+          label="Columns (',' separated)"/>
         <Field
           name={`${rule}.rule.id`}
           component={renderSelectField}
-          label="Rule" />
+          label="Statistic" />
         <Field
           name={`${rule}.parameters`}
           type="text"
@@ -80,7 +80,7 @@ let FieldArraysForm = (props) => {
       <Field name="name" type="text" component={renderField} label="Dataset Name" />
       <Field name="location" type="text" component={renderField} label="Dataset Location" />
       <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
-      <Field name="notificationList" type="text" component={renderField} label="Notification List" />
+      <Field name="notificationList" type="text" component={renderField} label="Owners" />
       <FieldArray name="datasetRules" component={renderDatasetRules}/>
       <div>
         <button type="submit" disabled={submitting}>Submit</button>

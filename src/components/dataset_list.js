@@ -24,7 +24,7 @@ class DatasetList extends Component {
           </td>
           <td>{dataset.location}</td>
           <td>{dataset.refreshFrequency}</td>
-          <td>{dataset.notificationList}</td>
+          <td>{dataset.owners}</td>
         </tr>
       );
   }
@@ -51,7 +51,7 @@ class DatasetList extends Component {
             <th>Name</th>
             <th>Location</th>
             <th>Refresh Frequency</th>
-            <th>Notification List</th>
+            <th>Owners</th>
           </tr>
         </thead>
         <tbody>
