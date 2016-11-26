@@ -14,8 +14,9 @@ class DatasetShow extends Component {
   renderRule(rule) {
       return (
         <tr scope="row" key={rule.id}>
-          <td>{rule.columnName}</td>
-          <td>{rule.rule.name}</td>
+          <td>{rule.columns}</td>
+          <td>{rule.statistic.name}</td>
+          <td>{rule.operator.operator}</td>
           <td>{rule.parameters}</td>
         </tr>
       );
@@ -28,8 +29,9 @@ class DatasetShow extends Component {
         <table className="table table-striped">
           <thead className="thead-inverse">
             <tr>
-              <th>Column Name</th>
-              <th>Rule</th>
+              <th>Columns</th>
+              <th>Statistic</th>
+              <th>Operator</th>
               <th>Value</th>
             </tr>
           </thead>
@@ -45,7 +47,7 @@ class DatasetShow extends Component {
     const dataset = this.props.dataset;
 
     if(!dataset) {
-      return <div>Loading</div>;
+      return <div>Loading..</div>;
     }
 
     return <div>
@@ -60,7 +62,7 @@ class DatasetShow extends Component {
       <div>
         <p>Location: {dataset.location}</p>
         <p>Profiling Frequency: {dataset.refreshFrequency}</p>
-        <p>Notification List: {dataset.notificationList}</p>
+        <p>Owners: {dataset.owners}</p>
         <hr/>
         {this.renderDatasetRules(dataset)}
       </div>

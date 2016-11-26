@@ -9,7 +9,7 @@ class DatasetEdit extends Component {
   }
 
   showResults(values) {
-    /*
+
     if(values.id) {
       this.props.updateDataset(values)
         .then(() => {
@@ -24,14 +24,14 @@ class DatasetEdit extends Component {
         this.context.router.push('/');
       });
     }
-*/
+/*
     new Promise(resolve => {
       setTimeout(() => {  // simulate server latency
         window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`)
         resolve()
       }, 500)
     });
-
+*/
   }
 
   render() {

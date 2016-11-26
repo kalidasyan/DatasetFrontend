@@ -108,7 +108,7 @@ let FieldArraysForm = (props) => {
       <Field name="name" type="text" component={renderField} label="Dataset Name" />
       <Field name="location" type="text" component={renderField} label="Dataset Location" />
       <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
-      <Field name="notificationList" type="text" component={renderField} label="Owners" />
+      <Field name="owners" type="text" component={renderField} label="Owners" />
       <FieldArray name="datasetRules" component={renderDatasetRules}/>
       <div>
         <button type="submit" disabled={submitting}>Submit</button>
