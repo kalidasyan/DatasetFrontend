@@ -7,8 +7,38 @@ class DatasetShow extends Component {
   componentWillMount() {
     this.props.getDatasetById(this.props.params.id);
 
+    this.renderDatasetStatistics = this.renderDatasetStatistics.bind(this);
+    this.renderStatistic = this.renderStatistic.bind(this);
     this.renderDatasetRules = this.renderDatasetRules.bind(this);
     this.renderRule = this.renderRule.bind(this);
+  }
+
+  renderStatistic(statistic) {
+      return (
+        <tr scope="row" key={statistic.id}>
+          <td>{statistic.name}</td>
+          <td>{statistic.description}</td>
+        </tr>
+      );
+  }
+
+  renderDatasetStatistics(dataset) {
+    return (
+      <div>
+        <h3>Dataset Statistics</h3>
+        <table className="table table-striped">
+          <thead className="thead-inverse">
+            <tr>
+              <th>Statistic</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {dataset.statistics.map(this.renderStatistic)}
+          </tbody>
+        </table>
+      </div>
+    );
   }
 
   renderRule(rule) {
@@ -63,6 +93,8 @@ class DatasetShow extends Component {
         <p>Location: {dataset.location}</p>
         <p>Profiling Frequency: {dataset.refreshFrequency}</p>
         <p>Owners: {dataset.owners}</p>
+        <hr/>
+        {this.renderDatasetStatistics(dataset)}
         <hr/>
         {this.renderDatasetRules(dataset)}
       </div>

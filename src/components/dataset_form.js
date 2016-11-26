@@ -61,6 +61,30 @@ const operators = [
   {'id' : 6, 'operator' : '<>'}
 ];
 
+const renderDatasetStatistics = ({ fields, meta: { touched, error } }) => {
+  return (
+  <ul>
+    <li>
+      <button type="button" onClick={() => fields.push({})}>Add Dataset Statistics</button>
+      {touched && error && <span>{error}</span>}
+    </li>
+    {fields.map((statistic, index) =>
+      <li key={index}>
+        <button
+          type="button"
+          title="Remove Statistic"
+          onClick={() => fields.remove(index)}/>
+        <h4>Dataset Statistic #{index + 1}</h4>
+        <Field
+          name={`${statistic}.id`}
+          component={renderStatistics}
+          label="Statistic" />
+      </li>
+      )}
+  </ul>
+  );
+}
+
 const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
   return (
   <ul>
@@ -109,6 +133,9 @@ let FieldArraysForm = (props) => {
       <Field name="location" type="text" component={renderField} label="Dataset Location" />
       <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
       <Field name="owners" type="text" component={renderField} label="Owners" />
+      <hr/>
+      <FieldArray name="statistics" component={renderDatasetStatistics}/>
+      <hr/>
       <FieldArray name="datasetRules" component={renderDatasetRules}/>
       <div>
         <button type="submit" disabled={submitting}>Submit</button>
