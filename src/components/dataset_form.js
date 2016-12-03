@@ -48,9 +48,9 @@ const statistics = [
   {'id' : 1, 'name' : 'Min'},
   {'id' : 2, 'name' : 'Max'},
   {'id' : 3, 'name' : 'Average'},
-  {'id' : 4, 'name' : 'Count'},
-  {'id' : 5, 'name' : 'Not-null-Count'},
-  {'id' : 6, 'name' : 'schema-change'}
+  {'id' : 4, 'name' : 'Not-null-Count'},
+  {'id' : 5, 'name' : 'Count'},
+  {'id' : 6, 'name' : 'Schema-Change'}
 ];
 
 const operators = [
