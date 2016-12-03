@@ -49,7 +49,8 @@ const statistics = [
   {'id' : 2, 'name' : 'Max'},
   {'id' : 3, 'name' : 'Average'},
   {'id' : 4, 'name' : 'Count'},
-  {'id' : 5, 'name' : 'Not-null-Count'}
+  {'id' : 5, 'name' : 'Not-null-Count'},
+  {'id' : 6, 'name' : 'schema-change'}
 ];
 
 const operators = [
@@ -100,11 +101,6 @@ const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
           onClick={() => fields.remove(index)}/>
         <h4>Dataset Rule #{index + 1}</h4>
         <Field
-          name={`${rule}.columns`}
-          type="text"
-          component={renderField}
-          label="Columns (',' separated)"/>
-        <Field
           name={`${rule}.statistic.id`}
           component={renderStatistics}
           label="Statistic" />
@@ -117,6 +113,11 @@ const renderDatasetRules = ({ fields, meta: { touched, error } }) => {
           type="text"
           component={renderField}
           label="Value"/>
+        <Field
+          name={`${rule}.columns`}
+          type="text"
+          component={renderField}
+          label="Columns (',' separated, only for column level rules)"/>
       </li>
       )}
   </ul>
@@ -132,6 +133,9 @@ let FieldArraysForm = (props) => {
       <Field name="name" type="text" component={renderField} label="Dataset Name" />
       <Field name="location" type="text" component={renderField} label="Dataset Location" />
       <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
+      <Field name="refreshDay" type="text" component={renderField} label="Refresh Day" />
+      <Field name="refreshTime" type="text" component={renderField} label="Refresh Time(hh:mm)" />
+      <Field name="sla" type="text" component={renderField} label="SLA(hours)" />
       <Field name="owners" type="text" component={renderField} label="Owners" />
       <hr/>
       <FieldArray name="statistics" component={renderDatasetStatistics}/>
