@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getDatasetById} from '../actions/index';
+import {getDatasetById, executeDataset} from '../actions/index';
 import {Link} from 'react-router';
 
 class DatasetShow extends Component {
@@ -11,6 +11,8 @@ class DatasetShow extends Component {
     this.renderStatistic = this.renderStatistic.bind(this);
     this.renderDatasetRules = this.renderDatasetRules.bind(this);
     this.renderRule = this.renderRule.bind(this);
+
+    this.executeNow = this.executeNow.bind(this);
   }
 
   renderStatistic(statistic) {
@@ -73,6 +75,11 @@ class DatasetShow extends Component {
     );
   }
 
+  executeNow(id) {
+    this.props.executeDataset(id);
+    window.alert("Executed!!");
+  }
+
   render() {
     const dataset = this.props.dataset;
 
@@ -87,6 +94,7 @@ class DatasetShow extends Component {
         className="btn btn-primary pull-xs-right">
           Edit
       </Link>
+
       <h2>Dataset: {dataset.name}</h2>
       <hr/>
       <div>
@@ -97,6 +105,12 @@ class DatasetShow extends Component {
         {this.renderDatasetStatistics(dataset)}
         <hr/>
         {this.renderDatasetRules(dataset)}
+        <hr/>
+        <button
+          onClick={() => this.executeNow(dataset.id)}
+          className="btn btn-primary">
+            Execute Now
+          </button>
       </div>
 
     </div>
@@ -107,4 +121,4 @@ function mapStateToProps(state) {
   return {dataset: state.dataset.activeDataset};
 }
 
-export default connect(mapStateToProps, {getDatasetById})(DatasetShow);
+export default connect(mapStateToProps, {getDatasetById, executeDataset})(DatasetShow);

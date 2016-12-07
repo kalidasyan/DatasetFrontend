@@ -6,6 +6,8 @@ export const ADD_DATASET = 'ADD_DATASET';
 export const UPDATE_DATASET = 'UPDATE_DATASET';
 export const RESET_DATASET = 'RESET_DATASET';
 
+export const EXECUTE_DATASET = 'EXECUTE_DATASET';
+
 const ROOT_URL = 'http://localhost:8081/dataset/v1/';
 
 export function getAllDatasets() {
@@ -49,8 +51,17 @@ export function updateDataset(props) {
 }
 
 export function resetDataset() {
-    return {
-      type: RESET_DATASET,
-      payload: null
+  return {
+    type: RESET_DATASET,
+    payload: null
+  }
+}
+
+export function executeDataset(id) {
+  const url = `${ROOT_URL}executor/execute/${id}`;
+  const request = axios.get(url);
+  return {
+    type: EXECUTE_DATASET,
+    payload: null
   }
 }
