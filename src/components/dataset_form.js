@@ -135,7 +135,7 @@ let FieldArraysForm = (props) => {
       <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
       <Field name="refreshDay" type="text" component={renderField} label="Refresh Day" />
       <Field name="refreshTime" type="text" component={renderField} label="Refresh Time(hh:mm)" />
-      <Field name="sla" type="text" component={renderField} label="SLA(hours)" />
+      <Field name="sla" type="text" component={renderField} label="Grace Period(hours)" />
       <Field name="owners" type="text" component={renderField} label="Owners" />
       <hr/>
       <FieldArray name="statistics" component={renderDatasetStatistics}/>

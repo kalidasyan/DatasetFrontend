@@ -46,10 +46,11 @@ const validate = values => {
     const datasetRulesErrors = []
     values.datasetRules.forEach((rule, ruleIndex) => {
       const ruleErrors = {}
+      /*
       if (!rule || !rule.columns) {
         ruleErrors.columns = 'Required'
         datasetRulesErrors[ruleIndex] = ruleErrors
-      }
+      }*/
       if (!rule || !rule.statistic) {
         ruleErrors.statistic = {'id' : 'Must select a statistic'};
         datasetRulesErrors[ruleIndex] = ruleErrors
