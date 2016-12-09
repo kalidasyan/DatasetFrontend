@@ -99,7 +99,10 @@ class DatasetShow extends Component {
       <hr/>
       <div>
         <p>Location: {dataset.location}</p>
-        <p>Profiling Frequency: {dataset.refreshFrequency}</p>
+        <p>Refresh Frequency: {dataset.refreshFrequency}</p>
+        <p>Refresh Hour: {dataset.refreshHour}</p>
+        <p>Lookback Days: {dataset.lookBackDays}</p>
+        <p>Grace Period (minutes): {dataset.gracePeriodInMinutes}</p>
         <p>Owners: {dataset.owners}</p>
         <hr/>
         {this.renderDatasetStatistics(dataset)}

@@ -50,7 +50,9 @@ const statistics = [
   {'id' : 3, 'name' : 'Average'},
   {'id' : 4, 'name' : 'Not-null-Count'},
   {'id' : 5, 'name' : 'Count'},
-  {'id' : 6, 'name' : 'Schema-Change'}
+  {'id' : 6, 'name' : 'SLA'},
+  {'id' : 7, 'name' : 'Data-Size-MegaBytes'},
+  {'id' : 8, 'name' : 'Schema-Change'}
 ];
 
 const operators = [
@@ -134,8 +136,9 @@ let FieldArraysForm = (props) => {
       <Field name="location" type="text" component={renderField} label="Dataset Location" />
       <Field name="refreshFrequency" type="text" component={renderField} label="Refresh Frequency" />
       <Field name="refreshDay" type="text" component={renderField} label="Refresh Day" />
-      <Field name="refreshTime" type="text" component={renderField} label="Refresh Time(hh:mm)" />
-      <Field name="sla" type="text" component={renderField} label="Grace Period(hours)" />
+      <Field name="refreshHour" type="text" component={renderField} label="Refresh Hour(0~23)" />
+      <Field name="lookBackDays" type="text" component={renderField} label="Lookback Days(0~10)" />
+      <Field name="gracePeriodInMinutes" type="text" component={renderField} label="Grace Period(minutes)" />
       <Field name="owners" type="text" component={renderField} label="Owners" />
       <hr/>
       <FieldArray name="statistics" component={renderDatasetStatistics}/>
