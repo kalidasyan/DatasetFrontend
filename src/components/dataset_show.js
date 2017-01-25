@@ -87,6 +87,10 @@ class DatasetShow extends Component {
       return <div>Loading..</div>;
     }
 
+    //        <p>Refresh Hour: {dataset.refreshHour}</p>
+    //        <p>Lookback Days: {dataset.lookBackDays}</p>
+    //        <p>Grace Period (minutes): {dataset.gracePeriodInMinutes}</p>
+
     return <div>
       <Link to='/'>Back to List</Link>
       <Link
@@ -98,11 +102,11 @@ class DatasetShow extends Component {
       <h2>Dataset: {dataset.name}</h2>
       <hr/>
       <div>
+        <p>Type: {dataset.type}</p>
         <p>Location: {dataset.location}</p>
+        <p>Data Folder Pattern: {dataset.dataFolderPattern}</p>
+        <p>Platform: {dataset.platform}</p>
         <p>Refresh Frequency: {dataset.refreshFrequency}</p>
-        <p>Refresh Hour: {dataset.refreshHour}</p>
-        <p>Lookback Days: {dataset.lookBackDays}</p>
-        <p>Grace Period (minutes): {dataset.gracePeriodInMinutes}</p>
         <p>Owners: {dataset.owners}</p>
         <hr/>
         {this.renderDatasetStatistics(dataset)}

@@ -16,6 +16,10 @@ class DatasetEdit extends Component {
         this.context.router.push('/');
       });
     } else {
+      //TODO: normalize dataset
+      //1. remove heading and trailing '/' from dataFolderPattern.
+      //2. Remove trailing '/' from location
+      //3. Check Owners, should be separated by ';'
       this.props.addDataset(values)
         .then(() => {
         //definition has been created, navigate the user to the index
