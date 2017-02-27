@@ -21,7 +21,7 @@ const statistics = [
   {'id' : 4, 'name' : 'Not-null-Count'},
   {'id' : 5, 'name' : 'Count'},
   {'id' : 6, 'name' : 'SLA'},
-  {'id' : 7, 'name' : 'Data-Size-MegaBytes'},
+  {'id' : 7, 'name' : 'fileSizeInByte'},
   {'id' : 8, 'name' : 'Schema-Change'}
 ];
 
