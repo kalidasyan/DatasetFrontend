@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import StatisticGraph from './statistic_graph';
+import StatisticDisplayStock from './statistic_display_stock';
 import {connect} from 'react-redux';
 import {getDatasetSummaryDisplayInfo} from '../actions/action_inspector';
 
@@ -14,6 +15,7 @@ class StatisticsDisplay extends Component {
 
     var categories = summaryInfo.summaryValues.map(summaryValue => summaryValue.dataDate);
     var data = summaryInfo.summaryValues.map(summaryValue => summaryValue.summaryValue);
+    // <StatisticDisplayStock />
     return (<div key={title}>
       <StatisticGraph title={title} categories={categories} data={data}/>
     </div>)
