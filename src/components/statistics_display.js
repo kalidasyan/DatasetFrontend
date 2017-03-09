@@ -11,13 +11,13 @@ class StatisticsDisplay extends Component {
   }
 
   renderStatisticGraph(summaryInfo) {
-    var title = summaryInfo.summaryName;
-
+    var summaryName = summaryInfo.summaryName;
+    var title = `Statistic: ${summaryName}`;
     var categories = summaryInfo.summaryValues.map(summaryValue => summaryValue.dataDate);
     var data = summaryInfo.summaryValues.map(summaryValue => summaryValue.summaryValue);
     // <StatisticDisplayStock />
-    return (<div key={title}>
-      <StatisticGraph title={title} categories={categories} data={data}/>
+    return (<div key={summaryName}>
+      <StatisticGraph title={title} name={summaryName} categories={categories} data={data}/>
     </div>)
   }
 

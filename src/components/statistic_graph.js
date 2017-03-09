@@ -13,6 +13,7 @@ class StatisticGraph extends Component {
         categories: props.categories
       },
       series: [{
+        name: props.name,
         type: "column",
         data: props.data
       }]
