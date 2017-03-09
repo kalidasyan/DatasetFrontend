@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const DATASET_SUMMARY_DISPLAY = "DATASET_SUMMARY_DISPLAY";
+export const STATISTICS_DISPLAY = "STATISTICS_DISPLAY";
 
 const ROOT_URL = 'http://tyan-mn1.linkedin.biz:8081/inspector/v1/datasetSummary';
 
@@ -13,7 +13,7 @@ export function getDatasetSummaryDisplayInfo({platform, location}){
   const request = axios.post(url, datasetKey);
 
   return {
-    type: DATASET_SUMMARY_DISPLAY,
+    type: STATISTICS_DISPLAY,
     payload: request
   };
 }
