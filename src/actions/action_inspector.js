@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const STATISTICS_DISPLAY = "STATISTICS_DISPLAY";
 
-const ROOT_URL = 'http://tyan-mn1.linkedin.biz:8081/inspector/v1/datasetSummary';
+const ROOT_URL = 'http://localhost:8081/inspector/v1/datasetSummary';
 
 export function getDatasetSummaryDisplayInfo({platform, location}){
   var datasetKey = {
