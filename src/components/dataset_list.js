@@ -14,6 +14,7 @@ class DatasetList extends Component {
   }
 
   renderDataset(dataset) {
+    var urlEncodedLocation = encodeURIComponent(dataset.location);
       return (
         <tr scope="row" key={dataset.id}>
           <td>{dataset.id}</td>
@@ -28,6 +29,11 @@ class DatasetList extends Component {
           <td>{dataset.refreshFrequency}</td>
           <td>Healthy</td>
           <td>{dataset.owners}</td>
+          <td>
+            <Link to={`/statisticsDisplay/${dataset.platform}/${urlEncodedLocation}`}>
+              View Graph
+            </Link>
+          </td>
         </tr>
       );
   }
@@ -58,6 +64,7 @@ class DatasetList extends Component {
             <th>Refresh Frequency</th>
             <th>Status</th>
             <th>Owners</th>
+            <th>StatisticsGraph</th>
           </tr>
         </thead>
         <tbody>

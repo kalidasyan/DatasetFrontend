@@ -15,6 +15,6 @@ export default (
     <Route path="dataset/update" component={DatasetEdit} />
     <Route path="dataset/:id" component={DatasetShow} />
     <Route path="method" component={MethodList}/>
-    <Route path="statisticGraph" component={StatisticsDisplay}/>
+    <Route path="statisticsDisplay/:platform/:location" component={StatisticsDisplay}/>
   </Route>
 );

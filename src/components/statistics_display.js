@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import StatisticGraph from './statistic_graph';
+import {connect} from 'react-redux';
+import {getDatasetSummaryDisplayInfo} from '../actions/action_dataset_summary';
+
 
 class StatisticsDisplay extends Component {
+  componentWillMount() {
+    console.log(this.props.params.location);
+    this.props.getDatasetSummaryDisplayInfo(this.props.params);
+  }
+
   render() {
     var title = "Test Title";
     var categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -15,4 +23,4 @@ class StatisticsDisplay extends Component {
   }
 }
 
-export default StatisticsDisplay;
+export default connect(null, {getDatasetSummaryDisplayInfo})(StatisticsDisplay);

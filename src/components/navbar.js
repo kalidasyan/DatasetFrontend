@@ -13,7 +13,7 @@ export default class Navbar extends Component {
             <li className="active"><Link to="/">Definitions</Link></li>
             <li><Link to="/method">Profiling Method</Link></li>
             <li><a href="#">Validation Rule</a></li>
-            <li><Link to="/statisticGraph">Statistic Graph</Link></li>
+            <li><Link to="/statisticsDisplay">Statistic Graph</Link></li>
           </ul>
         </div>
       </nav>
