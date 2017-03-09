@@ -6,7 +6,7 @@ import DatasetList from './components/dataset_list';
 import DatasetEdit from './components/dataset_edit';
 import DatasetShow from './components/dataset_show';
 import MethodList from './components/method_list';
-import StatisticGraph from './components/statistic_graph';
+import StatisticsDisplay from './components/statistics_display';
 
 export default (
   <Route path="/" component={App}>
@@ -15,6 +15,6 @@ export default (
     <Route path="dataset/update" component={DatasetEdit} />
     <Route path="dataset/:id" component={DatasetShow} />
     <Route path="method" component={MethodList}/>
-    <Route path="statisticGraph" component={StatisticGraph}/>
+    <Route path="statisticGraph" component={StatisticsDisplay}/>
   </Route>
 );
